@@ -126,6 +126,80 @@ show fanchart
 
 smpl @all
 
+'-------------------------------------------------------
+'/////   Seasonal Adjustment 
+
+gdp_mo.x13(save="d11", tf=log, arimasmpl="1994Q1 2021Q4")  @arima(model="(0, 1, 0)(0, 1, 1)") @reg(regs="lpyear,easter[3],tc2009.2,ls1995.1,ls1995.2,ls2009.1,") @x11(filter=s3x3)
+
+
+
+gdp_90lo.x13(save="d11", tf=log, arimasmpl="1994Q1 2021Q4")  @arima(model="(0, 1, 0)(0, 1, 1)") @reg(regs="lpyear,easter[3],tc2009.2,ls1995.1,ls1995.2,ls2009.1,") @x11(filter=s3x3)
+
+
+
+gdp_90ho.x13(save="d11", tf=log, arimasmpl="1994Q1 2021Q4")  @arima(model="(0, 1, 0)(0, 1, 1)") @reg(regs="lpyear,easter[3],tc2009.2,ls1995.1,ls1995.2,ls2009.1,") @x11(filter=s3x3)
+
+
+
+gdp_60lo.x13(save="d11", tf=log, arimasmpl="1994Q1 2021Q4")  @arima(model="(0, 1, 0)(0, 1, 1)") @reg(regs="lpyear,easter[3],tc2009.2,ls1995.1,ls1995.2,ls2009.1,") @x11(filter=s3x3)
+
+
+
+gdp_60ho.x13(save="d11", tf=log, arimasmpl="1994Q1 2021Q4")  @arima(model="(0, 1, 0)(0, 1, 1)") @reg(regs="lpyear,easter[3],tc2009.2,ls1995.1,ls1995.2,ls2009.1,") @x11(filter=s3x3)
+
+
+
+gdp_30lo.x13(save="d11", tf=log, arimasmpl="1994Q1 2021Q4")  @arima(model="(0, 1, 0)(0, 1, 1)") @reg(regs="lpyear,easter[3],tc2009.2,ls1995.1,ls1995.2,ls2009.1,") @x11(filter=s3x3)
+
+
+
+gdp_30ho.x13(save="d11", tf=log, arimasmpl="1994Q1 2021Q4")  @arima(model="(0, 1, 0)(0, 1, 1)") @reg(regs="lpyear,easter[3],tc2009.2,ls1995.1,ls1995.2,ls2009.1,") @x11(filter=s3x3)
+
+
+
+'----------------------------------------------------------
+genr x1sa=@pcy(x1_d11)
+genr x1_90l=@pcy(x1_90l_d11)
+genr x1_90h=@pcy(x1_90h_d11)
+genr x1_60losa_g=@pcy(gdp_60lo_d11)
+genr gdp_60hosa_g=@pcy(gdp_60ho_d11)
+genr gdp_30losa_g=@pcy(gdp_30lo_d11)
+genr gdp_30hosa_g=@pcy(gdp_30ho_d11)
+
+delete(noerr) g4
+group g4
+g4.add  gdp_90losa_g gdp_90hosa_g gdp_60losa_g gdp_60hosa_g gdp_30losa_g gdp_30hosa_g PIBsa
+
+
+smpl {%fcsmpl}
+
+
+delete(noerr) fanchart_s_g
+freeze(fanchart_s_g) g4.mixed  band(1,2,3,4,5,6) line(7) 
+
+' Modify colors for each band
+fanchart_s_g.setelem(1) axis(right) legend(Intervalo de Confianza al 90% ) fillcolor(143,202,250) 
+fanchart_s_g.setelem(2) axis(right) legend()  fillcolor(26,140,255)
+fanchart_s_g.setelem(3) axis(right) legend(Intervalo de Confianza al 60%) fillcolor(20,80,220)
+fanchart_s_g.setelem(4) axis(right) legend()
+fanchart_s_g.setelem(5) axis(right) legend(Intervalo de Confianza al 30%) 
+fanchart_s_g.setelem(6) axis(right) legend() 
+fanchart_s_g.axis(right)
+'fanchart_o_g.setelem(7) linecolor(255,160,160) fillcolor(255,160,160) linewidth(2)
+fanchart_s_g.setelem(7) axis(right) linewidth(1.5)
+'fanchart_o_g.setelem(8) axis(right) linewidth(1.5) linecolor(255,160,160) fillcolor(255,160,160)
+'fanchart_o_g.setelem(8) linecolor(0,64,128) linewidth(2)
+'fanchart_o_g.setelem(7) legend(PIB en cifras originales)  linewidth(1.5)
+'fanchart_o_g.setelem(8) legend(Mediana)
+fanchart_s_g.legend -inbox position(0.10,1.85)
+fanchart_s_g.addtext(t, textcolor(0,64,128), font(Calibri, 14, b)) "Gráfica de Abanico: Actividad Económica (%Anual, a.e.)" 
+fanchart_s_g.addtext(.10, 3.53, x, textcolor(white), fillcolor(0,64,128), framecolor(0,64,128), font(Calibri, 8, b)) "a.e./Serie con ajuste estacional.Elaborado por EAnálisis Consultores con información de INEGI y BANXICO " 
+fanchart_s_g.options backcolor(white)
+fanchart_s_g.draw(shade,b, gray) {%fsmpl}
+show fanchart_s_g
+'fanchart.setelem(!i) fcolor(@rgb(!r,!g,!b))
+
+smpl @all
 
 
 
