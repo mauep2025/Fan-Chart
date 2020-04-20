@@ -7,13 +7,13 @@ pageselect scenario
 'Complete Sample 
 %csmpl="1994q1 2021q4"
 
-'Sample for estimation
+
 %esmpl="1996q1 2019q4"
 
 'Sample for graph variables 
 %gsmpl="2016q1 2019q3"
 
-' Sample for forecasting
+
 %fsmpl="2019q3 2021q4"
 
 ' Sample for Fan Chart
