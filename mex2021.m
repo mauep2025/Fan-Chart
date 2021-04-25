@@ -30,8 +30,9 @@ time2 = time2(1:108,:);
 
 ###=100*((###(2:T,:)./###(1:T-1,:))-1); %  Change it for the variables lables (Quarter to Quarter growth rate)
 
-
-%------------ VAR model
+%%-----------------------------------%
+%------------ VAR model -------------%
+%------------------------------------%
 
 % Generating the Data A Matrix od the data base matrix 
 
@@ -49,7 +50,9 @@ np=results.NumEstimatedParameters;
 numperiods = #;  % Forecast periods
 [FY1,Forecastmse1]=forecast(EstMdl,numperiods,##(##:##:));
 
-% --- Conditional forecast and conditional scenario 
+%%----------------------------------------------------------------%
+%--------- Conditional forecast and conditional scenario ---------%
+%-----------------------------------------------------------------%
 
 % Conditional analysis is closely related to stress testing. Specifically, values of a subset of variables are specified in advance, 
 % often subjected to adverse conditions or extreme values, in an attempt to assess the effects on the remaining variables during 
@@ -69,7 +72,7 @@ FY_2 = forecast(EstMdl,#,###(##:##,:),'YF',YS);
 
 
 
-%------------------- Fan chart
+%-------------------Fan chart---------------------%
 
 % Running the simulation 
 rng default
@@ -102,9 +105,9 @@ ylabel('####', 'fontsize', 13);
 set(gcf, 'color',  'w');
 title('#####' , 'fontsize', 16)
 
-
-%//////////////--- Counterfactual (sub-sample sensitivity analysis)
-
+%%-----------------------------------------------------------------------------------------%
+%------------------- Counterfactual (sub-sample sensitivity analysis) ---------------------%
+%------------------------------------------------------------------------------------------%
 
  % Sensitivity analysis, compare the estimation results obtained from two
  % distinct subsamples. 
