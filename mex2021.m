@@ -139,18 +139,15 @@ food_r=100*((food(5:T,:)./food(1:T-4,:))-1);
 
 time1 = (1996+0/12:1/12:2021+2/12)';
 
-%-------- Endogenous estimation: counterfactual experiment 
-% ---- Mex real gasoline vs wholesale refinery gasoline price (From Aug
-% 2002 to Dec 2020)
-% Endogenpus experiment simulation
+% Endogenous experiment simulation set
 
 Ab1_inf = [###(##:##) ... ... ...] ; % Pre-sample period ( Fist sample)
 Ab2_inf = [###(##:##) ... ... ...] ; % Post-sample perios (Second Sample) 
 
-% Exogenous experiment simulation 
+% Exogenous experiment simulation set
 
-Ac1_inf = [ ###(##:##) ... ...] ;
-Ac2_inf = [ ###(##:##) ... ...] ;
+Ac1_inf = [ ###(##:##) ... ...] ;  % Pre-sample period ( Fist sample)
+Ac2_inf = [ ###(##:##) ... ...] ; % Post-sample perios (Second Sample) 
 
 X_b1 = ###(##:##)
 X_b2 = ####(##:##)
