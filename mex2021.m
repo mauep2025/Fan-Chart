@@ -26,9 +26,9 @@ time2 = time2(1:108,:);
  
  ###= log(###);
 
-###=100*((###(5:T,:)./###(1:T-4,:))-1); %
+###=100*((###(5:T,:)./###(1:T-4,:))-1); % Change it for the variables lables (Year to Year growth rate)
 
-###=100*((###(2:T,:)./###(1:T-1,:))-1); % Change it for the variables lables
+###=100*((###(2:T,:)./###(1:T-1,:))-1); %  Change it for the variables lables (Quarter to Quarter growth rate)
 
 
 %------------ VAR model
@@ -94,25 +94,13 @@ fanplot (x3, x6, 'FanFaceColor',[0 0.4470 0.7410;1 1 1],'ForecastMarker', ...
 %-------Probability Density Function (Forecast)
 
 
-Yz = permute(squeeze(YY(#,:,:)), [2 1]);
+Yz = permute(squeeze(YY(#,:,:)), [2 1]); #Change it for the number of periods to squeeze
 figure
 histogram(Yz(:,#), 'Normalization', 'pdf', 'FaceColor',[0 0.4470 0.7410] )
 xlabel('#####', 'fontsize', 13)
 ylabel('####', 'fontsize', 13);
 set(gcf, 'color',  'w');
 title('#####' , 'fontsize', 16)
-
-
-%%%%////////////////////// Inflación
-
-% Genereal Inflation, food prices,, commoditie prices, oil prices, m2,
-% exchange rate, interest rate, GDP or M2
-
-inpc = inflation.inpc;
-food = inflation.imf_food;
-
-inpc_r=100*((inpc(5:T,:)./inpc(1:T-4,:))-1);
-food_r=100*((food(5:T,:)./food(1:T-4,:))-1);
 
 
 %//////////////--- Counterfactual (sub-sample sensitivity analysis)
@@ -153,7 +141,7 @@ X_b1 = ###(##:##)
 X_b2 = ####(##:##)
 
 numseries=#;
-seriesnam={'####','####','####','####'};
+seriesnam={'####','####' ... ....};
 Mdl_c=varm(numseries,#);
 Mdl_c.SeriesNames=seriesnam;
 
@@ -169,13 +157,13 @@ Mdl_c.SeriesNames=seriesnam;
 
 % Filtering exogenous
 
-Yc1 = filter(EstMd2, Ec1, 'Y0', Ab2_inf(1:EstMd2.P,:) , 'Scale', false);  %simulated values
-Yi1 = Ab2_inf((EstMd2.P + 1):(size(Ec1,1) + EstMd2.P),:); % Extracting relevant information comparacion from the observed data
+Yc1 = filter(EstMd2, Ec1, 'Y0', Ab2_inf(1:EstMd2.P,:) , 'Scale', false);  % Computing the Simulated values
+Yi1 = Ab2_inf((EstMd2.P + 1):(size(Ec1,1) + EstMd2.P),:); % Extracting relevant information, comparation from the observed data
 
 % Filtering endogenous
 
-Yc2 = filter(EstMd4, Ec3, 'Y0', Ac2_inf(1:EstMd4.P,:) , 'Scale', false);  %simulated values
-Yi2 = Ac2_inf((EstMd4.P + 1):(size(Ec3,1) + EstMd4.P),:); % Extracting relevant information comparacion from the observed data
+Yc2 = filter(EstMd4, Ec3, 'Y0', Ac2_inf(1:EstMd4.P,:) , 'Scale', false);  %Computing the Simulated values
+Yi2 = Ac2_inf((EstMd4.P + 1):(size(Ec3,1) + EstMd4.P),:); % Extracting relevant information comparation from the observed data
 
 
 
