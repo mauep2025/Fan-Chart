@@ -38,7 +38,7 @@ time2 = time2(1:108,:);
 
 ### = [###(##:##) ###(##:##) ....]; %Change it for the variables
 
-# This approach also can work for structural analysis if it is arranged from the most exogenous variables to the most endogenous variable
+% This approach also can work for structural analysis, if it is arranged from the most exogenous variables to the most endogenous variable
 
 numseries= #; # Number of variables of the model 
 seriesnam={'###','##', ....}; #Lables of the varoables 
@@ -61,6 +61,7 @@ numperiods = #;  % Forecast periods
 % The aim of of forecast scenario is to asess the sensitivity of reduce-form VAR-Forecast to hypothetical future events. 
 % Forecast scenarios are not designed to characterize the most likely outcomes given past observations, but to characterize the risk assosiated with unlikely possible 
 % outcomes in the future in the form of a hypothetical "What-If" question. 
+
 % The sensitivity of a forecast to alternative assumtions about future structural shocks or observables may be captured by probability-weighted conditional forecast densities
 % and summarized by formal risk measures. Also, risk analysis along the above lines allowes users of VAR-forecast models to explore by how much and at what forecast horizon 
 % downside and upside risks change as a function of the probability weights attached to different scenarios. 
@@ -69,8 +70,6 @@ numperiods = #;  % Forecast periods
 YS  = [###(##:##) ... ... nan(##,1) ... ##(##,1) ...nan(##,##)];
 
 FY_2 = forecast(EstMdl,#,###(##:##,:),'YF',YS);
-
-
 
 %-------------------Fan chart---------------------%
 
@@ -109,20 +108,16 @@ title('#####' , 'fontsize', 16)
 %------------------- Counterfactual (sub-sample sensitivity analysis) ---------------------%
 %------------------------------------------------------------------------------------------%
 
- % Sensitivity analysis, compare the estimation results obtained from two
- % distinct subsamples. 
- % Examine the response of a model fitted to data over one period to shocks
- % derived from a model fitted over another. 
+ % Sensitivity analysis, compare the estimation results obtained from two distinct subsamples. 
+ % Examine the response of a model fitted to data over one period to shocks derived from a model fitted over another. 
  
  % The counterfactual series (or simulated series)  indicates how the variable of interest would have evolved, had one been able to replace all realizations 
- % of shock j by zero,
- % while preserving teh remaining structural shock in the model. The vertical distnace between the actual series and the counterfactual tells us how shock j 
- % affected the observed 
- % observed (past) information at this point in time. 
+ % of shock j by zero, while preserving teh remaining structural shock in the model. The vertical distnace between the actual series and the counterfactual 
+ % tells us how shock j affected the observed observed (past) information at this point in time. 
  
  % A counterfactual refers to a simulation of the path of the model variables under diffrent sequence of structural shocks than observed in thej actual data. 
 
-% For this experiment two estimation sample must be choosen, and it must be assosiated to economic events of or policy changing over the variables. 
+% For this experiment two estimation sample (or estimation periods) must be choosen, and it must be assosiated to economic events of or policy changing over the variables. 
 
 % Note: The second Sample must be bigger than the fisrt one. 
  
