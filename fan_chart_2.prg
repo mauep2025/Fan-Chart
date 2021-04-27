@@ -193,7 +193,7 @@ fanchart_s_g.setelem(7) axis(right) linewidth(1.5)
 'fanchart_o_g.setelem(8) legend(Mediana)
 fanchart_s_g.legend -inbox position(0.10,1.85)
 fanchart_s_g.addtext(t, textcolor(0,64,128), font(Calibri, 14, b)) "Gráfica de Abanico: Actividad Económica (%Anual, a.e.)" 
-fanchart_s_g.addtext(.10, 3.53, x, textcolor(white), fillcolor(0,64,128), framecolor(0,64,128), font(Calibri, 8, b)) "a.e./Serie con ajuste estacional.Elaborado por EAnálisis Consultores con información de INEGI y BANXICO " 
+fanchart_s_g.addtext(.10, 3.53, x, textcolor(white), fillcolor(0,64,128), framecolor(0,64,128), font(Calibri, 8, b)) "a.e./Serie con ajuste estacional" 
 fanchart_s_g.options backcolor(white)
 fanchart_s_g.draw(shade,b, gray) {%fsmpl}
 show fanchart_s_g
