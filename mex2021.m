@@ -34,7 +34,7 @@ time2 = time2(1:108,:);
 %------------ VAR model -------------%
 %------------------------------------%
 
-% Generating the Data A Matrix od the data base matrix 
+% Generating the Data A Matrix to load the data (base matrix) 
 
 ### = [###(##:##) ###(##:##) ....]; %Change it for the variables
 
