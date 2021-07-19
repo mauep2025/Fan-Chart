@@ -128,12 +128,12 @@ time1 = (1996+0/12:1/12:2021+2/12)';
 % Endogenous experiment simulation set
 
 Ab1_inf = [###(##:##) ... ... ...] ; % Pre-sample period ( Fist sample)
-Ab2_inf = [###(##:##) ... ... ...] ; % Post-sample periods (Second Sample) 
+Ab2_inf = [###(##:##) ... ... ...] ; % Post-sample period (Second Sample) 
 
 % Exogenous experiment simulation set
 
 Ac1_inf = [ ###(##:##) ... ...] ;  % Pre-sample period ( Fist sample)
-Ac2_inf = [ ###(##:##) ... ...] ; % Post-sample periods (Second Sample) 
+Ac2_inf = [ ###(##:##) ... ...] ; % Post-sample period (Second Sample) 
 
 X_b1 = ###(##:##)
 X_b2 = ####(##:##)
